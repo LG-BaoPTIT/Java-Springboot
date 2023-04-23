@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JSP Page</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container" style="margin-top: 10px;">
+		<div class="row"
+			style="border: 1px darkgrey solid; border-radius: 10px; width: 50%; margin: 0 auto; padding: 20px;">
+			<div class="col-sm-12">
+				<p align="center"><img alt="" src="../images/Logo.png"></p>
+				<hr/>
+				<p align="center"><img alt="" th:src="@{'getimage/'+${INFOR.photo}}" width="500" height="400"></p>
+				<h3 th:text="${INFOR.name}"></h3>
+				<h3>Hồ sơ xin việc</h3>
+				<ul>
+					<li th:text="${FILE_NAME}"></li>
+					<li th:text="${FILE_TYPE}"></li>
+					<li th:text="${FILE_SIZE}"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

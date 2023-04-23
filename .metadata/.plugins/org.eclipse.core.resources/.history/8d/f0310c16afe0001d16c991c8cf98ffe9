@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        
+        <div class="container">
+            <h2>DANH SACH NGUOI DUNG</h2>
+            <p><a class="btn btn-primary" href="/">ADD USER</a></p>
+            <p><label th:text="'Hello: ' +${session.USERNAME}"></label><a href="/logout">Logout</a></p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>UserName</th>
+                        <th>Password</th>
+                        <th>FullName</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${USERS}">
+                        <td th:text="${item.userName}"></tdth>
+                        <td th:text="${item.passWord}"></td>
+                        <td th:text="${item.fullName}"></td>
+                        <td th:text="${item.age}"></td>
+                        <td> <span th:text="${item.gender}? 'Nam' : 'Nu'"></span> </td>
+                        <td><a class="btn btn-primary btn-sm" th:href="@{'/edit/'+ ${item.userName}}">Edit</a> |      
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

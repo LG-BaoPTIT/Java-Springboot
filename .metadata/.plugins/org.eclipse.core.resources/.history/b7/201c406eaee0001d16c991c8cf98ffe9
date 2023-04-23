@@ -1,0 +1,108 @@
+package learncode.spring.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.servlet.http.HttpSession;
+import learncode.spring.model.*;
+import learncode.spring.services.UserService;
+@Controller
+public class UserController {
+	@Autowired
+	UserService userService;
+
+	@RequestMapping("/login")
+	public String showlogin() {
+		return "login";
+	}
+	
+	@PostMapping("/checklogin")
+	public String checkLogin(ModelMap model,@RequestParam("username") String username, @RequestParam("password") String password
+				, HttpSession session
+			) {
+
+		if(userService.checkLogin(username, password)) {
+			session.setAttribute("USERNAME", username);
+			model.addAttribute("USERS", userService.findAll());
+			return "view-user";
+			
+		}
+		else {
+			model.addAttribute("ERROR", "Username or password not exist");
+		}
+		return "login";
+	}
+	@GetMapping("logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("USERNAME");
+		return "redirect:/login";
+	}
+	//==========================================//
+	@RequestMapping("/")
+	public String addOrEdit(ModelMap model) {
+		User u = new User();
+		
+		model.addAttribute("USER",u); 
+		model.addAttribute("ACTION","saveOrUpdate");
+		return "register-user";
+	}
+	@PostMapping("/saveOrUpdate")
+	public String saveOrUpdate(ModelMap model,@ModelAttribute("USER") User user) {
+//		UserDAO dao =new UserDAO();
+//		dao.save(user);
+//		System.out.print(dao.getAll().size());
+		userService.save(user);
+		return "register-user";
+	}
+	@RequestMapping("list") 
+	public String listUser(ModelMap model,HttpSession session) {
+		//UserDAO dao =new UserDAO();
+		if(session.getAttribute("USERNAME") != null) {
+			model.addAttribute("USERS",userService.findAll());
+			return "view-user";
+		}
+		return "login";
+		
+	}
+	@RequestMapping("/edit/{userName}")
+	public String edit(ModelMap model, @PathVariable(name="userName") String userName) {
+//		UserDAO dao =new UserDAO();
+//		User u=dao.findUserName(userName);
+		Optional<User> u = userService.findById(userName);
+		if(u.isPresent()) {
+			model.addAttribute("USER",u.get());
+		}
+		else {
+			model.addAttribute("USER",new User());
+		}
+		
+		model.addAttribute("ACTION","/saveOrUpdate");
+		return "register-user";
+		
+	}
+	@RequestMapping("/delete/{userName}")
+	public String delete(@PathVariable(name="userName") String userName,ModelMap model) {
+		//UserDAO dao=new UserDAO();
+		userService.deleteById(userName);
+		model.addAttribute("USERS",userService.findAll());
+		return "view-user";
+	}
+	@GetMapping("/find")
+	public String findName() {
+		User ls = userService.FindByUsername("admin");
+	
+			System.out.println(ls.toString());
+		
+		return "findname";
+	}
+}

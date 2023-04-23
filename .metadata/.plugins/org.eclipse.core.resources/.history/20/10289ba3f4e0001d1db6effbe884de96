@@ -1,0 +1,5 @@
+package learncode.spring.service;
+
+public interface EmployeeService {
+	
+}

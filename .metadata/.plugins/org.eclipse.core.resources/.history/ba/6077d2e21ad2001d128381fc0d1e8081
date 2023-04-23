@@ -1,0 +1,5 @@
+package com.userManage.RESTfulAPI_UserManage.exception;
+
+public class notFoundException {
+
+}

@@ -1,0 +1,6 @@
+package learncode.spring.model;
+
+@Entity
+public class Employee {
+
+}

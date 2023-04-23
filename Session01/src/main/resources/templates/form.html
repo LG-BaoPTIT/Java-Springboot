@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form method="post" action="/save">
+        <div class="form_name">
+            <p>Ho va ten</p>
+            <input type="text" name="name">
+        </div>
+        <div class="form_msv">
+            <p>Ma sinh vien</p>
+            <input type="text" name="msv">
+        </div>
+        <div class="form_majors">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <p>Chuyen nganh</p>
+                    Cong nghe phan men<input class="form-check-input" name="majors" type="radio" value="CNPM" aria-label="Text for screen reader">
+                    He thong thong tin<input type="radio" name="majors" value="HTTT">
+                </label>
+            </div>
+        </div>
+         <div> 
+          <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

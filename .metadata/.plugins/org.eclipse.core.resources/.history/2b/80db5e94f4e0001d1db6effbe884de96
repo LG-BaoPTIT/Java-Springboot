@@ -1,0 +1,65 @@
+package learncode.spring.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import learncode.spring.model.Employee;
+import learncode.spring.reponsitory.EmployeeRepository;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService{
+	@Autowired
+	EmployeeRepository employeeRepository;
+
+	public Employee save(Employee entity) {
+		return employeeRepository.save(entity);
+	}
+
+	public List<Employee> saveAll(List<Employee> entities) {
+		return (List<Employee>)employeeRepository.saveAll(entities);
+	}
+
+	public Optional<Employee> findById(Long id) {
+		return employeeRepository.findById(id);
+	}
+
+	public boolean existsById(Long id) {
+		return employeeRepository.existsById(id);
+	}
+
+	public List<Employee> findAll() {
+		return (List<Employee>)employeeRepository.findAll();
+	}
+
+	public List<Employee> findAllById(List<Long> ids) {
+		return (List<Employee>)employeeRepository.findAllById(ids);
+	}
+
+	public long count() {
+		return employeeRepository.count();
+	}
+
+	public void deleteById(Long id) {
+		employeeRepository.deleteById(id);
+	}
+
+	public void delete(Employee entity) {
+		employeeRepository.delete(entity);
+	}
+
+	public void deleteAllById(Iterable<? extends Long> ids) {
+		employeeRepository.deleteAllById(ids);
+	}
+
+	public void deleteAll(Iterable<? extends Employee> entities) {
+		employeeRepository.deleteAll(entities);
+	}
+
+	public void deleteAll() {
+		employeeRepository.deleteAll();
+	}
+	
+}

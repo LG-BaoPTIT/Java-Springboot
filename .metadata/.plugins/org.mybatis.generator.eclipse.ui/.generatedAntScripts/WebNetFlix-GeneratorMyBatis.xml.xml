@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<project default="generate">
+  <target name="generate">
+    <mybatis.generate configfile="C:\Users\Asus ROG\Desktop\WEB\WebNetFlix\src\main\resources\GeneratorMyBatis.xml" />
+  </target>
+</project>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.mybatis.generator.eclipse.launching.LaunchConfigurationType">
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+        <listEntry value="/WebNetFlix"/>
+    </listAttribute>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+        <listEntry value="4"/>
+    </listAttribute>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="WebNetFlix"/>
+    <stringAttribute key="org.mybatis.generator.eclipse.ui.CONFIG_TAB.FILE_NAME" value="${workspace_loc:/WebNetFlix/src/main/resources/GeneratorMyBatis.xml}"/>
+</launchConfiguration>

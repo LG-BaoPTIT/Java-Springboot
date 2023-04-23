@@ -1,0 +1,5 @@
+package learncode.spring.controller;
+
+public class MainController {
+
+}

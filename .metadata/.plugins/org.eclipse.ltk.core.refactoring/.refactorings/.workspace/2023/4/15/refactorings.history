@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;taco-cloud&apos;" deleteContents="true" description="Delete resource &apos;taco-cloud&apos;" element1="/taco-cloud" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1681348376602"/>
+</session>
